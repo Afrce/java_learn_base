@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.xdclass.xdvideo.mapper.RoleHasPermissionsMapper">
+
+    <resultMap id="BaseResultMap" type="net.xdclass.xdvideo.model.Do.RoleHasPermissionsDo">
+            <id property="permissionUuid" column="permission_uuid" jdbcType="CHAR"/>
+            <id property="roleUuid" column="role_uuid" jdbcType="CHAR"/>
+            <result property="createdAt" column="created_at" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        permission_uuid,role_uuid,created_at
+    </sql>
+</mapper>

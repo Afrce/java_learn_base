@@ -1,0 +1,39 @@
+server:
+  port: 9999
+
+spring:
+  ######### 数据库配置 ###########
+  datasource:
+    username: homestead
+    password: secret
+    url: jdbc:mysql://127.0.0.1:33060/xdclass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  ###### json ####
+#  jackson:
+#    default-property-inclusion: non_null
+########### 日志配置 ##########
+logging:
+  level:
+    net.biancheng.www: trace
+  file:
+    path: logs
+  pattern:
+    console: "%d{yyyy-MM-dd hh:mm:ss} [%thread] %-5level %logger{50}: %line - %msg%n"
+    # 日志记录格式[组件名称] [时间戳] [日志级别] [类名.方法名] [消息文本]
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %p %C.%M:%line %m %n"
+##############微信相关配置##########
+wechat:
+  appid: wx5beac15ca207cdd40c
+  appsecret: 5548012f33417fdsdsdd6f96b382fe548215e9
+
+########## mybatis 配置 ########
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+############ jwt 配置 #########
+jwt:
+  appSecret: 5548012f33417fdsdsdd6f96b382fe548215e9
+  expires: 1
+  subject: javaTest

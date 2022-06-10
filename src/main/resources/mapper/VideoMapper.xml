@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.xdclass.xdvideo.mapper.VideoMapper">
+
+    <resultMap id="BaseResultMap" type="net.xdclass.xdvideo.domain.Video">
+            <id property="id" column="id" jdbcType="OTHER"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="summary" column="summary" jdbcType="VARCHAR"/>
+            <result property="coverImg" column="cover_img" jdbcType="VARCHAR"/>
+            <result property="viewNum" column="view_num" jdbcType="INTEGER"/>
+            <result property="price" column="price" jdbcType="INTEGER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="online" column="online" jdbcType="INTEGER"/>
+            <result property="point" column="point" jdbcType="DOUBLE"/>
+            <result property="deletedAt" column="deleted_at" jdbcType="DATE"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,summary,
+        cover_img,view_num,price,
+        create_time,online,point
+    </sql>
+    <select id="findAllVideo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from video
+    </select>
+    <select id="findOneById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from video
+        where
+        id = #{id}
+    </select>
+    <select id="getVideoList" resultMap="BaseResultMap" parameterType="net.xdclass.xdvideo.model.dto.VideoDTO">
+        select
+        <include refid="Base_Column_List"/>
+        from video
+        <where>
+            <if test="dto.name != null and dto.name != ''">
+                AND title = #{dto.name}
+            </if>
+        </where>
+        Order By id desc
+    </select>
+    <select id="getAllByDeletedAt" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from video
+        where
+        deleted_at is not null
+    </select>
+</mapper>

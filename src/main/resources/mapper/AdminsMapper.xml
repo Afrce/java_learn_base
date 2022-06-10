@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.xdclass.xdvideo.mapper.AdminsMapper">
+
+    <resultMap id="BaseResultMap" type="net.xdclass.xdvideo.model.Do.AdminsDo">
+            <id property="uuid" column="uuid" jdbcType="CHAR"/>
+            <result property="groupUuid" column="group_uuid" jdbcType="CHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="createdAt" column="created_at" jdbcType="TIMESTAMP"/>
+            <result property="updatedAt" column="updated_at" jdbcType="TIMESTAMP"/>
+            <result property="id" column="id" jdbcType="OTHER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uuid,group_uuid,name,
+        email,avatar,password,
+        created_at,updated_at,id
+    </sql>
+</mapper>

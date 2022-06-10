@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.xdclass.xdvideo.mapper.VideoOrderMapper">
+
+    <resultMap id="BaseResultMap" type="net.xdclass.xdvideo.domain.VideoOrder">
+            <id property="id" column="id" jdbcType="OTHER"/>
+            <result property="openid" column="openid" jdbcType="VARCHAR"/>
+            <result property="outTradeNo" column="out_trade_no" jdbcType="VARCHAR"/>
+            <result property="state" column="state" jdbcType="INTEGER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="notifyTime" column="notify_time" jdbcType="TIMESTAMP"/>
+            <result property="totalFee" column="total_fee" jdbcType="INTEGER"/>
+            <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+            <result property="headImg" column="head_img" jdbcType="VARCHAR"/>
+            <result property="videoId" column="video_id" jdbcType="INTEGER"/>
+            <result property="videoTitle" column="video_title" jdbcType="VARCHAR"/>
+            <result property="videoImg" column="video_img" jdbcType="VARCHAR"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="ip" column="ip" jdbcType="VARCHAR"/>
+            <result property="del" column="del" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,openid,out_trade_no,
+        state,create_time,notify_time,
+        total_fee,nickname,head_img,
+        video_id,video_title,video_img,
+        user_id,ip,del
+    </sql>
+</mapper>

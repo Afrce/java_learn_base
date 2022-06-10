@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.xdclass.xdvideo.mapper.PermissionsMapper">
+
+    <resultMap id="BaseResultMap" type="net.xdclass.xdvideo.model.Do.PermissionsDo">
+            <id property="uuid" column="uuid" jdbcType="CHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="guardName" column="guard_name" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="TINYINT"/>
+            <result property="group" column="group" jdbcType="VARCHAR"/>
+            <result property="locale" column="locale" jdbcType="VARCHAR" typeHandler="com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler"/>
+            <result property="comment" column="comment" jdbcType="VARCHAR"/>
+            <result property="createdAt" column="created_at" jdbcType="TIMESTAMP"/>
+            <result property="updatedAt" column="updated_at" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uuid,name,guard_name,
+        type,"group",locale,
+        `comment`,created_at,updated_at
+    </sql>
+    <select id="findAllByModelTypeAndModelUuid" resultMap="BaseResultMap">
+        select
+            p.uuid, p.name, p.guard_name, p.type, p.group, p.locale, p.comment, p.created_at, p.updated_at
+        from permissions as p left join model_has_permissions as mp on p.uuid = mp.permission_uuid
+        where
+        mp.model_type = #{modelType} and mp.model_uuid = #{modelUuid}
+    </select>
+    <select id="findAllByRoleUuids" resultMap="BaseResultMap">
+        select p.uuid, p.name, p.guard_name, p.type, p.group, p.locale, p.comment, p.created_at, p.updated_at
+        from permissions as p left join role_has_permissions as mp on p.uuid = mp.permission_uuid
+        where mp.role_uuid in
+        <foreach collection="modelUuids" item="model_uuid" open="(" separator="," close=")">
+            #{model_uuid}
+        </foreach>
+    </select>
+</mapper>

@@ -1,0 +1,90 @@
+server:
+  port: 9999
+
+spring:
+  ######### 数据库配置 ###########
+  datasource:
+    username: homestead
+    password: secret
+    url: jdbc:mysql://127.0.0.1:33060/xdclass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  ###### json ####
+  jackson:
+    mapper:
+      sort-properties-alphabetically: false
+
+  ########### redis #############
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 4
+
+#  jms:
+#    ### 发送消息配置 发步与订阅 默认不消费 使用多容器的配置
+#    pub-sub-domain: true
+  ######### activeMQ ########
+  activemq:
+    broker-url: tcp://0.0.0.0:61616
+    user: admin
+    password: admin
+    ## 连接池相关 ##
+    pool:
+      enabled: true
+      max-connections: 100
+
+  rabbitmq:
+    host: 192.168.10.10
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /
+
+  application:
+    name: 测试用
+########### 日志配置 ##########
+logging:
+  level:
+    net.biancheng.www: trace
+    org.pringframework.boot.autoconfigure: error
+  file:
+    path: logs
+  pattern:
+    console: "%d{yyyy-MM-dd hh:mm:ss} [%thread] %-5level %logger{50}: %line - %msg%n"
+    # 日志记录格式[组件名称] [时间戳] [日志级别] [类名.方法名] [消息文本]
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %p %C.%M:%line %m %n"
+##############微信相关配置##########
+wechat:
+  appid: wx5beac15ca207cdd40c
+  appsecret: 5548012f33417fdsdsdd6f96b382fe548215e9
+
+########## mybatis 配置 ########
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      logic-not-delete-value: "NULL"
+      logic-delete-value: NOW()
+
+############ jwt 配置 #########
+jwt:
+  appSecret: 5548012f33417fdsdsdd6f96b382fe548215e9
+  expires: 1
+  subject: javaTest
+
+############ elasticsearch 配置 #########
+elasticsearch:
+  host: 49.235.67.22
+  port: 9200
+  username: ""
+  password: ""
+  analyzer: ik_smart
+
+########### swagger 配置相关 ##########
+swagger:
+  enable: true
+  application-name: 测试样例
+  application-version: 1.0
+  application-description: 这是测试用的

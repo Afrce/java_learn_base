@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.xdclass.xdvideo.mapper.EpisodeMapper">
+
+    <resultMap id="BaseResultMap" type="net.xdclass.xdvideo.domain.Episode">
+            <id property="id" column="id" jdbcType="OTHER"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="num" column="num" jdbcType="INTEGER"/>
+            <result property="duration" column="duration" jdbcType="VARCHAR"/>
+            <result property="coverImg" column="cover_img" jdbcType="VARCHAR"/>
+            <result property="videoId" column="video_id" jdbcType="INTEGER"/>
+            <result property="summary" column="summary" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="chapterId" column="chapter_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,num,
+        duration,cover_img,video_id,
+        summary,create_time,chapter_id
+    </sql>
+</mapper>
